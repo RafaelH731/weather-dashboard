@@ -42,6 +42,15 @@ function getWeather(cityName) {
        tempValue.innerHTML= data.main.temp;
        windValue.innerHTML= data.wind.speed;
        uvIndexValue.innerHTML = data.main.humidity;
+
+       let UVQueryURL = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&appid=" + APIkey;
+       
+       fetch(UVQueryURL)
+       .then(function(response){
+           return response.json()
+       }).then(function(data){
+           console.log("data: ", data)
+       })
     })
     
 }
