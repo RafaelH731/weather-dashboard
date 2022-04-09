@@ -26,11 +26,13 @@ var humidityValue = document.querySelector(".humidity")
 var uvIndex = document.getElementById("uvIndex");
 var uvIndexValue = document.querySelector(".uvIndex")
 
-var date1 = document.querySelector(".date1")
-var date1Icon = document.querySelector(".date1Icon")
-var date1Temp = document.querySelector(".date1Temp")
-var date1Wind = document.querySelector(".date1Wind")
-var date1Humidity = document.querySelector(".date1Humidity")
+var date = document.querySelector(".date")
+var dateIcon = document.querySelector(".dateIcon")
+var dateTemp = document.querySelector(".dateTemp")
+var dateWind = document.querySelector(".dateWind")
+var dateHumidity = document.querySelector(".dateHumidity")
+
+
 
 
 var cityName = "seattle"
@@ -59,9 +61,14 @@ function getWeather(cityName) {
            console.log("data: ", data)
         uvIndexValue.innerHTML = data.daily[0].uvi;
         //info for the second day
-        date1Temp.innerHTML = data.daily[1].temp.day;
-        date1Wind.innerHTML = data.daily[1].wind_speed
-        date1Humidity.innerHTML = data.daily[1].humidity
+        for (i = 1; i < 5; i++){
+        //HOLD FOR DATE
+        //date1Icon.innerHTML = date.daily[1].weather[0].icon
+        dateTemp.innerHTML = data.daily[i].temp.day;
+        dateWind.innerHTML = data.daily[i].wind_speed
+        dateHumidity.innerHTML = data.daily[i].humidity
+        }
+       
        })
       
     })
