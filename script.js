@@ -48,7 +48,7 @@ function getWeather(cityName) {
         let lat = data.coord.lat;
         let lon = data.coord.lon;
     console.log(lat, lon)
-       tempValue.innerHTML= data.main.temp;
+       tempValue.innerHTML= kelvinToFaren(data.main.temp);
        windValue.innerHTML= data.wind.speed;
        humidityValue.innerHTML = data.main.humidity;
 //second API getting called to get the UVindex and 5 day weather
@@ -76,16 +76,23 @@ function getWeather(cityName) {
            
         //HOLD FOR DATE
         iconEl.innerHTML = data.daily[1].weather[0].icon
-        tempEl.innerHTML = data.daily[i].temp.day;
+        tempEl.innerHTML = kelvinToFaren(data.daily[i].temp.day);
         windEl.innerHTML = data.daily[i].wind_speed
         humidityEl.innerHTML = data.daily[i].humidity
 
         document.querySelector("#fiveDayForecast").appendChild(newDayEl)
         }
        
+        const fiveday = document.querySelectorAll("#fiveday")
+        fiveday.classlist.add("flex")
        })
       
     })
     
 }
  getWeather("seattle")
+ 
+//converts kelvin to farenheit
+ function kelvinToFaren(K) {
+    return Math.floor((K - 273.15) *1.8 +32);
+ }
