@@ -61,12 +61,26 @@ function getWeather(cityName) {
            console.log("data: ", data)
         uvIndexValue.innerHTML = data.daily[0].uvi;
         //info for the second day
-        for (i = 1; i < 5; i++){
+        for (i = 1; i <= 5; i++){
+
+            let newDayEl = document.createElement ("ul")
+            let iconEl = document.createElement("li");
+            let tempEl = document.createElement("li")
+            let windEl = document.createElement("li")
+            let humidityEl = document.createElement("li")
+            newDayEl.appendChild(iconEl);
+            newDayEl.appendChild(tempEl);
+            newDayEl.appendChild(windEl);
+            newDayEl.appendChild(humidityEl);
+            
+           
         //HOLD FOR DATE
-        //date1Icon.innerHTML = date.daily[1].weather[0].icon
-        dateTemp.innerHTML = data.daily[i].temp.day;
-        dateWind.innerHTML = data.daily[i].wind_speed
-        dateHumidity.innerHTML = data.daily[i].humidity
+        iconEl.innerHTML = data.daily[1].weather[0].icon
+        tempEl.innerHTML = data.daily[i].temp.day;
+        windEl.innerHTML = data.daily[i].wind_speed
+        humidityEl.innerHTML = data.daily[i].humidity
+
+        document.querySelector("#fiveDayForecast").appendChild(newDayEl)
         }
        
        })
